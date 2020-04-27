@@ -2,6 +2,16 @@
     "cmake.configureArgs": [
         "-DCNL_DEV=ON",
         "-DCMAKE_CXX_COMPILER_LAUNCHER=ccache",
-        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
-    ]
+        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+        "-DCNL_TEST_STD_SIMD=ON"
+    ],
+    "files.associations": {
+        "vector": "cpp",
+        "type_traits": "cpp",
+        "istream": "cpp",
+        "limits": "cpp",
+        "ostream": "cpp",
+        "simd": "cpp",
+        "cstdint": "cpp"
+    }
 }

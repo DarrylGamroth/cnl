@@ -250,21 +250,21 @@ endif(Boost_FOUND AND Boost_VERSION GREATER 106099 AND CNL_EXCEPTIONS)
 ######################################################################
 # create test of Vc integration
 
-set(CNL_TEST_VC ON CACHE BOOL "test VC library integration")
-if(${CNL_TEST_VC} AND IS_GCC_FAMILY AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER "7.0.0"
-        AND CMAKE_VERSION VERSION_GREATER "3.2")
-    make_test(vc.cpp target "" "")
+set(CNL_TEST_STD_SIMD ON CACHE BOOL "test std-simd library integration")
+if(${CNL_TEST_STD_SIMD})
+    make_test(std-simd.cpp target "" "")
 
     ExternalProject_Add(
-            Vc
-            URL "https://github.com/johnmcfarlane/Vc/archive/37ea0c6a0455ee91d62dc04d082bd4bac9fac5b3.zip"
-            URL_MD5 "bab6f17c63e128b3c28ac9aa9324dd09"
-            UPDATE_COMMAND ""
+            std-simd
+            URL "https://github.com/VcDevel/std-simd/releases/download/simd-1.0.0/simd-1.0.0.tar.gz"
+            URL_MD5 "795cdc72c583c579ffe86cb6db267844"
+            BUILD_COMMAND ""
+            CONFIGURE_COMMAND ""
             INSTALL_COMMAND ""
-            CMAKE_ARGS "-DBUILD_TESTING=OFF"
+            UPDATE_COMMAND ""
     )
-    add_dependencies("${target}" Vc)
+    add_dependencies("${target}" std-simd)
 
-    ExternalProject_Get_Property(Vc source_dir)
+    ExternalProject_Get_Property(std-simd source_dir)
     target_include_directories("${target}" SYSTEM PRIVATE "${source_dir}")
 endif()
